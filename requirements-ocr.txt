@@ -1,0 +1,6 @@
+# Math OCR. Only needed for papers whose equations are rendered as images
+# (anything exported from Google Docs or Word). Pulls in torch: ~2-3 GB.
+-r requirements.txt
+pix2tex[api]>=0.1.4
+# albumentations 1.4 calls cv2 in a way OpenCV 5 rejects
+opencv-python-headless<5
