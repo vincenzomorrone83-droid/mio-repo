@@ -1,0 +1,4 @@
+# Math OCR. Only needed for papers whose equations are rendered as images
+# (anything exported from Google Docs or Word). Pulls in torch: ~2-3 GB.
+-r requirements.txt
+pix2tex[api]>=0.1.2

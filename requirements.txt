@@ -1,0 +1,6 @@
+pymupdf4llm>=1.28
+pymupdf>=1.28
+sympy>=1.14
+latex2sympy2_extended>=1.11
+matplotlib>=3.10
+SciencePlots>=2.2
