@@ -43,10 +43,23 @@ and OCR them:
 
 ```python
 from newph.formulas import extract_formula_images, ocr
+from newph.verify_ocr import triage, report
 
 images = extract_formula_images("paper.pdf", "build/paper/formulas")
-images = ocr(images)          # fills .latex via pix2tex
+images = ocr(images)                  # fills .latex via pix2tex
+print(report(triage(images)))
 ```
+
+Formula crops are produced by rendering the page region, not by pulling the
+image object: equations are stored as stencil masks whose glyphs live in the
+alpha channel, so the object on its own decodes to a black rectangle.
+
+**Read the triage before using any of it.** On the test paper, all four sampled
+formulas came back with at least one error — `\frac{1}{2}` read as
+`\frac{1}{\mathcal{L}}`, `=` read as `\rightarrow`, a Dirac slash read as
+`\stackrel{\cdot}{y}\wedge`. The triage rejects LaTeX that is malformed or
+unrenderable; it does not and cannot tell you a formula is right. For that,
+use UniMERNet's CDM metric or read it yourself.
 
 ## Draw a figure from the paper's own formula
 

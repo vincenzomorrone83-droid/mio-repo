@@ -25,8 +25,8 @@ extraction returns `[?][?]` for every formula. OCR is mandatory, not optional.
 | Tool | Role | Notes |
 |---|---|---|
 | [surya](https://github.com/datalab-to/surya) | full-page OCR with inline math | Surya 2 returns equations in `<math>` tags as KaTeX-compatible LaTeX. Supersedes [texify](https://github.com/VikParuchuri/texify), which is **deprecated**. |
-| [LaTeX-OCR / pix2tex](https://github.com/lukas-blecher/LaTeX-OCR) | single formula image → LaTeX | MIT, ViT, runs on CPU. Used by `newph.formulas.ocr`. |
-| [UniMERNet](https://github.com/opendatalab/UniMERNet) | formula recognition specialist | Ships the **CDM** metric: renders predicted and ground-truth LaTeX and matches them character by character — an automatic check, not trust. |
+| [LaTeX-OCR / pix2tex](https://github.com/lukas-blecher/LaTeX-OCR) | single formula image → LaTeX | MIT, ViT, runs on CPU. Installed here and used by `newph.formulas.ocr`. **misurato**: recovers the structure but erred on 4 of 4 sampled formulas — `\frac{1}{2}` → `\frac{1}{\mathcal{L}}`, `=` → `\rightarrow`, Dirac slash → `\stackrel{\cdot}{y}\wedge`. Needs `opencv-python-headless<5`; albumentations 1.4 breaks against OpenCV 5. |
+| [UniMERNet](https://github.com/opendatalab/UniMERNet) | formula recognition specialist | Ships the **CDM** metric: renders predicted and ground-truth LaTeX and matches them character by character. This is the piece that actually verifies a formula. **misurato**: a naive pixel-overlap stand-in was written and thrown away — it scored a hand-corrected Einstein equation 0.062 against the wrong OCR's 0.063, because glyph metrics dominate. Character-level matching is not a detail you can skip. |
 | [latex2sympy2_extended](https://github.com/huggingface/latex2sympy2_extended) | LaTeX → SymPy | ANTLR-based, more robust than SymPy's own parser. **Beware**: it lowercases symbol names (`N` → `n`), so read symbols off the parsed expression. |
 | [SymPy](https://docs.sympy.org/latest/modules/parsing.html) | symbolic → numeric callable | `lambdify` turns the manuscript's own formula into a function. |
 
