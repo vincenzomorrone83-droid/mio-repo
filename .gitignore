@@ -2,3 +2,10 @@
 build/
 __pycache__/
 *.pyc
+print/node_modules/
+print/fonts/
+print/fonts.css
+print/gf.css
+print/print.html
+print/*.pdf
+print/*.png
