@@ -1,0 +1,23 @@
+---
+import katex from "katex";
+
+interface Props {
+  tex: string;
+  display?: boolean;
+  label?: string;
+}
+
+const { tex, display = true, label } = Astro.props;
+const html = katex.renderToString(tex, {
+  throwOnError: false,
+  displayMode: display,
+});
+---
+{display ? (
+  <div class="eq-box">
+    <div set:html={html} />
+    {label && <div style="font-family: var(--mono); font-size: 0.72rem; color: var(--muted); margin-top: 0.5rem;">{label}</div>}
+  </div>
+) : (
+  <span class="eq-inline" set:html={html} />
+)}
