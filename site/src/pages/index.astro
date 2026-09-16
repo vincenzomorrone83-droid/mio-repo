@@ -1,0 +1,260 @@
+---
+import "katex/dist/katex.min.css";
+import "../styles/global.css";
+import Equation from "../components/Equation.astro";
+import RotationChart from "../components/RotationChart.astro";
+
+const title = "Dynamic Vacuum Relaxation Theory — un sito per il paper";
+const description =
+  "Presentazione interattiva del paper 'Dynamic Vacuum Relaxation Theory (DVRT)' di Tatarov Evgeniy: gravità emergente, materia oscura ed energia oscura dal vuoto di de Sitter.";
+---
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2242%22 fill=%22%23ff5a1f%22 stroke=%22%23111%22 stroke-width=%228%22/></svg>" />
+  </head>
+  <body>
+    <nav class="topnav">
+      <div class="wrap">
+        <span class="brand">DVRT.site</span>
+        <ul>
+          <li><a href="#crisi">Crisi ΛCDM</a></li>
+          <li><a href="#mond">MOND</a></li>
+          <li><a href="#pilastri">Pilastri</a></li>
+          <li><a href="#beta">β = 1/6</a></li>
+          <li><a href="#simulatore">Simulatore</a></li>
+          <li><a href="#predizioni">Predizioni</a></li>
+          <li><a href="#test">Test</a></li>
+          <li><a href="#limiti">Limiti</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="wrap">
+        <span class="badge">Ricerca indipendente · non ancora peer-reviewed</span>
+        <h1>Dynamic Vacuum<br />Relaxation Theory</h1>
+        <p style="max-width: 60ch; font-size: 1.15rem; margin-top: 1rem;">
+          Una teoria relativistica completa e autoconsistente della gravità in cui la
+          fenomenologia della materia oscura e l'accelerazione cosmica non nascono da
+          particelle mai osservate, ma dalla struttura quantistica del vuoto di de Sitter.
+        </p>
+        <p class="byline">
+          Tatarov Evgeniy — Independent Researcher · giugno 2026
+        </p>
+      </div>
+    </header>
+
+    <section id="crisi">
+      <div class="wrap">
+        <div class="kicker">01 — Motivazione</div>
+        <h2>La crisi del modello ΛCDM</h2>
+        <p>
+          Il modello standard (costante cosmologica Λ + materia oscura fredda) descrive bene
+          la struttura su grande scala, ma negli ultimi anni si sono accumulate tensioni
+          persistenti tra le sue previsioni e i dati di precisione:
+        </p>
+        <ul class="tick">
+          <li><strong>Tensione di Hubble (&gt;5σ)</strong> — H₀ da CMB (Planck, 67.4 km/s/Mpc) contro distanze locali (SH0ES, ~73 km/s/Mpc).</li>
+          <li><strong>Cusp-core problem</strong> — le simulazioni N-body prevedono aloni con nucleo cuspidale (ρ ∝ r⁻¹), le osservazioni mostrano nuclei piatti.</li>
+          <li><strong>Velocità di collisione anomale</strong> — ammassi come El Gordo e il Bullet Cluster mostrano velocità d'infall statisticamente improbabili in ΛCDM.</li>
+          <li><strong>Le galassie "impossibili" di JWST</strong> — sistemi stellari massicci (M* ~ 10¹⁰ M☉) già a z ~ 10–16.</li>
+          <li><strong>Missing satellites / too-big-to-fail</strong> — molti meno satelliti osservati di quelli previsti dalle simulazioni CDM.</li>
+          <li><strong>Nessun rilevamento diretto</strong> — LZ, XENONnT, PandaX-4T non hanno osservato segnali WIMP, scendendo ben sotto il "WIMP miracle".</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="mond">
+      <div class="wrap">
+        <div class="kicker">02 — L'alternativa</div>
+        <h2>MOND e la coincidenza cosmica</h2>
+        <p>
+          La Modified Newtonian Dynamics propone che la dinamica newtoniana si rompa sotto
+          una scala critica di accelerazione:
+        </p>
+        <Equation tex={"g_{\\text{obs}} = g_N\\,\\nu\\!\\left(\\frac{g_N}{a_0}\\right), \\qquad a_0 \\approx 1.2\\times 10^{-10}\\ \\text{m/s}^2"} />
+        <p>
+          MOND spiega curve di rotazione piatte e la relazione di Tully-Fisher barionica senza
+          materia oscura, ma resta non relativistica e tratta <em>a₀</em> come parametro empirico.
+          Il paper parte da una coincidenza notata da Milgrom: <em>a₀</em> è vicino a
+          <em> cH₀</em>, cioè legato all'espansione cosmica globale.
+        </p>
+        <div class="callout">
+          DVRT eleva questa coincidenza a predizione rigorosa: deriva
+          <strong> a₀ = cH₀/6</strong> dalla struttura fondamentale dello spaziotempo, non
+          come parametro libero.
+        </div>
+      </div>
+    </section>
+
+    <section id="pilastri">
+      <div class="wrap">
+        <div class="kicker">03 — Il cuore della teoria</div>
+        <h2>I tre pilastri di DVRT</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <span class="num">01</span>
+            <h3>Rottura di simmetria</h3>
+            <p>
+              Il gruppo conforme SO(2,4) si rompe spontaneamente a SO(1,3) (Lorentz) alla
+              scala di Hubble. I modi di Goldstone sono il campo scalare dilatonico Θ e il
+              campo vettoriale A<sub>μ</sub> — non aggiunti a mano, ma conseguenza inevitabile
+              della simmetria.
+            </p>
+          </div>
+          <div class="card">
+            <span class="num">02</span>
+            <h3>Origine quantistica</h3>
+            <p>
+              Θ non è una particella fondamentale: è un condensato idrodinamico effettivo di
+              campi fermionici sul bordo dS₄/CFT₃, proiettato nel bulk tramite la dualità
+              olografica dS/CFT.
+            </p>
+          </div>
+          <div class="card">
+            <span class="num">03</span>
+            <h3>Zero parametri liberi</h3>
+            <p>
+              La costante di accoppiamento β = 1/6 emerge da tre derivazioni indipendenti
+              (topologia, teoria dei campi conforme, termodinamica) che convergono sullo
+              stesso numero.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beta">
+      <div class="wrap">
+        <div class="kicker">04 — La costante universale</div>
+        <h2>Perché β = 1/6</h2>
+        <p>
+          Tre percorsi teorici indipendenti convergono sullo stesso valore, unificati dalla
+          dualità olografica dS/CFT:
+        </p>
+        <div class="origin-diagram">
+          <div class="origin-node top">
+            <span class="t">Topologia</span>
+            Secondo numero di Bernoulli B₂ = 1/6 · classe di Todd · indice di Atiyah-Singer
+            per l'operatore di Dirac su una varietà 4D.
+          </div>
+          <div class="origin-node">
+            <span class="t">Teoria dei campi conforme</span>
+            Punto fisso IR del gruppo di rinormalizzazione per l'accoppiamento non minimo
+            ξRΘ²: ξ = (D−2)/[4(D−1)] = 1/6 per D = 4.
+          </div>
+          <div class="origin-node">
+            <span class="t">Termodinamica</span>
+            Risposta elastica del vuoto di de Sitter: β = (D−2)/(D−1) × 1/4 = 2/3 × 1/4 = 1/6.
+          </div>
+          <div class="origin-result">β = 1/6 — costante universale di proiezione per lo spaziotempo 4D</div>
+        </div>
+        <p>Da qui la scala di accelerazione di Milgrom è derivata analiticamente:</p>
+        <Equation tex={"a_0 = \\beta c H_0 = \\frac{cH_0}{6} \\approx 1.135\\times 10^{-10}\\ \\text{m/s}^2"} label="Eq. 1" />
+        <p>Il Lagrangiano completo di DVRT nel frame di Einstein:</p>
+        <Equation tex={"\\mathcal{L}_{\\text{DVRT}} = \\frac{a_0^2}{8\\pi G}\\,\\mathcal{F}\\!\\left(\\frac{|\\nabla\\Theta|^2}{a_0^2}\\right) - \\frac{1}{2}\\frac{c^2}{L_H^2}\\Theta^2 + \\frac{\\beta}{2}\\Theta T_{\\text{vis}} - \\frac{1}{4}F_{\\mu\\nu}F^{\\mu\\nu} + \\frac{1}{2}m_A^2 A_\\mu A^\\mu + \\gamma A_\\mu J^\\mu_{\\text{bar}}"} label="Eq. 23" />
+        <p>
+          dove la funzione di interpolazione è dimostrata unica dalle condizioni fisiche
+          richieste (limite newtoniano, limite MOND, assenza di ghost, no caustiche):
+        </p>
+        <Equation tex={"\\mathcal{F}(X) = \\frac{2}{3}\\left[(1+X)^{3/2} - 1\\right]"} label="Teorema 5.1" />
+      </div>
+    </section>
+
+    <section id="simulatore">
+      <div class="wrap">
+        <div class="kicker">05 — Visualizzazione</div>
+        <h2>Simulatore: curve di rotazione</h2>
+        <p>
+          La firma osservativa più celebre di MOND/DVRT sono le curve di rotazione piatte
+          delle galassie. Muovi lo slider per cambiare la massa barionica e vedere come si
+          separano la previsione newtoniana pura e quella di DVRT (Eq. 39):
+        </p>
+        <Equation tex={"v_c^4 = \\beta\\, a_0\\, G\\, M_b = \\frac{G M_b c H_0}{36}"} label="Eq. 39 — relazione di Tully-Fisher barionica, senza scatter intrinseco" />
+        <RotationChart />
+      </div>
+    </section>
+
+    <section id="predizioni">
+      <div class="wrap">
+        <div class="kicker">06 — Falsificabilità</div>
+        <h2>Quattro predizioni verificabili nel prossimo decennio</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <h3>Attraversamento della barriera fantasma</h3>
+            <p>L'equazione di stato dell'energia oscura attraversa w = −1 a z ≲ 0.5 (DESI, Euclid, LSST).</p>
+          </div>
+          <div class="card">
+            <h3>Birifrangenza cosmica</h3>
+            <p>Rotazione del piano di polarizzazione del CMB di Δχ ∼ 0.3° ± 0.1° (CMB-S4, LiteBIRD).</p>
+          </div>
+          <div class="card">
+            <h3>Buchi neri primordiali regolari</h3>
+            <p>Distribuzione di massa log-normale piccata a M ∼ 10¹⁸ g, candidati a materia oscura fredda.</p>
+          </div>
+          <div class="card">
+            <h3>Offset di lensing scala-dipendente</h3>
+            <p>M<sub>lens</sub>/M<sub>dyn</sub> da ≈1 su scala galattica a un eccesso del 10–20% su scala di ammasso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="test">
+      <div class="wrap">
+        <div class="kicker">07 — Precisione</div>
+        <h2>Test nel campo forte</h2>
+        <table class="tests">
+          <thead>
+            <tr><th>Test</th><th>Esito dichiarato nel paper</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sistema Solare (Cassini, LLR, precessione)</td><td>Margini di 10⁻³⁰ grazie a doppio screening (Vainshtein + Yukawa)</td></tr>
+            <tr><td>Pulsar binaria PSR J0737-3039</td><td>Accordo con la RG a 17 cifre significative</td></tr>
+            <tr><td>Ombre di buchi neri (EHT) / modi quasi-normali (LIGO/Virgo)</td><td>Indistinguibile dalla RG per buchi neri astrofisici</td></tr>
+            <tr><td>Velocità delle onde gravitazionali</td><td>c<sub>GW</sub> = c, coerente con GW170817</td></tr>
+            <tr><td>SPARC — 175 galassie</td><td>χ²ᵥ ∼ 1.0–1.5 con zero parametri liberi</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="limiti">
+      <div class="wrap">
+        <div class="kicker">08 — Onestà scientifica</div>
+        <h2>Limiti dichiarati e stato del paper</h2>
+        <div class="callout warn">
+          Questo sito presenta fedelmente il contenuto di un preprint firmato da un
+          ricercatore indipendente. Non risulta essere stato sottoposto a revisione paritaria
+          in una rivista. Le affermazioni ("zero parametri liberi", accordo con tutti i test
+          citati) sono quelle del paper stesso, non una valutazione esterna verificata.
+        </div>
+        <ul class="tick">
+          <li>Il "Bullet Cluster Memory Effect" non è riprodotto nelle simulazioni 1D/2D del paper.</li>
+          <li>Lo spettro di potenza completo del CMB richiede un'implementazione in CLASS/CAMB, non ancora fatta.</li>
+          <li>Il paper stesso elenca un percorso di lavoro futuro (tabella dei collaboratori necessari: cosmologi, relativisti numerici, gruppo di gravità quantistica).</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div class="wrap">
+        <p>Fonte: Tatarov Evgeniy, <em>"Dynamic Vacuum Relaxation Theory (DVRT): Complete Unified Theory of Emergent Gravity"</em>, giugno 2026 (preprint, ricerca indipendente).</p>
+        <p>Sito generato con Astro + KaTeX a partire dal PDF del paper. Riferimenti selezionati citati nel testo:</p>
+        <ol>
+          <li>Planck Collaboration, A&amp;A 641, A6 (2020).</li>
+          <li>Riess A.G. et al., ApJ 934, L7 (2022).</li>
+          <li>Milgrom M., ApJ 270, 365 (1983).</li>
+          <li>McGaugh S.S., Lelli F., Schombert J.M., PRL 117, 201101 (2016).</li>
+          <li>Bekenstein J.D., PRD 48, 3641 (1993).</li>
+          <li>LIGO/Virgo/Fermi/INTEGRAL, ApJL 848, L13 (2017).</li>
+        </ol>
+      </div>
+    </footer>
+  </body>
+</html>
